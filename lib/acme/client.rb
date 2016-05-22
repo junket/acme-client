@@ -15,7 +15,7 @@ class Acme::Client
 
   attr_reader :private_key, :nonces, :operation_endpoints
 
-  def register(contact:)
+  def register(contact: nil)
     payload = {
       resource: 'new-reg', contact: Array(contact)
     }
@@ -24,7 +24,7 @@ class Acme::Client
     ::Acme::Client::Resources::Registration.new(self, response)
   end
 
-  def authorize(domain:)
+  def authorize(domain: nil)
     payload = {
       resource: 'new-authz',
       identifier: {
