@@ -7,7 +7,7 @@ class Acme::Client
     'revoke-cert' => '/acme/revoke-cert'
   }.freeze
 
-  def initialize(private_key:, endpoint: DEFAULT_ENDPOINT, directory_uri: nil, connection_options: {})
+  def initialize(:private_key, :endpoint => DEFAULT_ENDPOINT, :directory_uri => nil, :connection_options => {})
     @endpoint, @private_key, @directory_uri, @connection_options = endpoint, private_key, directory_uri, connection_options
     @nonces ||= []
     load_directory!
